@@ -1,0 +1,40 @@
+input = list(open("01-In.py").read().split())
+masses = []
+for a in input:
+    masses.append(int(a))
+print(masses)
+
+def part1(masses):
+    fuel = 0
+    for mass in masses:
+        fuel += (mass//3 - 2)
+    return fuel
+
+#print(part1(masses))
+
+def part2(masses):
+    total_fuel = 0
+    for mass in masses:
+        module_fuel = 0
+        adder = mass
+        while adder > 0:
+            adder = adder//3 - 2
+            if adder > 0:
+                module_fuel += adder
+        print(module_fuel)
+        total_fuel += module_fuel
+    return total_fuel
+
+print(part2(masses))
+
+def tester(number):
+    module_fuel = 0
+    adder = number
+    while adder > 0:
+        adder = adder // 3 - 2
+        if adder > 0:
+            module_fuel += adder
+        print(adder)
+    print(module_fuel)
+
+#print(tester(120588))
