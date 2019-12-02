@@ -1,0 +1,30 @@
+input = open("02-In.py").read().split(",")
+input = [int(x) for x in input]
+
+def opcode(input):
+    node = 0
+    while input[node] != 99:
+        first = input[input[node+1]]
+        second = input[input[node+2]]
+        if input[node] == 1:
+            input[input[node+3]] = first + second
+        elif input[node] == 2:
+            input[input[node+3]] = first * second
+        node += 4
+    #print(input)
+    return input
+
+def searching(input):
+    new_input = list(input)
+    for n in range(0,100):
+        for m in range(0,100):
+            new_input[1] = n
+            new_input[2] = m
+            #print(n,m)
+            #print(new_input)
+            if opcode(new_input)[0] == 19690720:
+                return (100*n+m)
+            else:
+                new_input = list(input)
+
+print(searching(input))
